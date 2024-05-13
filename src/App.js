@@ -1,24 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { Provider } from 'react-redux';
+import { store } from './Pages/Reducer';
+import { ConnectedForm } from './Pages/RegisterForm';
+import { BrowserRouter,Routes,Route } from 'react-router-dom';
+import { TablePage } from './Pages/TablePage';
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+       <Provider store={store}>
+
+         <Routes>
+          <Route path='/' element={<ConnectedForm/>}/>
+          <Route path='/table' element={<TablePage/>}/>
+         </Routes>
+
+      </Provider>
+    </BrowserRouter>
   );
 }
 
