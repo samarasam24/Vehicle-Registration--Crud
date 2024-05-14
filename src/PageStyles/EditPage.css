@@ -1,40 +1,42 @@
-.form-container{
+.editForm-container{
     display: flex;
     flex-direction: column;
-    padding-top: 40px;
+    justify-content: center;
     align-items: center;
     height: 100vh;
-   background-color: #ede8f5;
+    background-color:whitesmoke;
 }
-.formHead{
-    color: #874f41;
-    text-shadow: 1px 1px 5px #adbbda;
-}
-.flex{
-    display: flex;
-    flex-direction: column;
-}
-.form{
+.editForm{
     display: grid;
     grid-template-columns: repeat(2,1fr);
     justify-content: center;
-    border: 1px solid gray;
+    border: 1px solid #A69080;
     padding:35px 30px;
     border-radius: 5px;
     box-shadow: 0px 0px 7px black;
-    background-color:rgba(128, 128, 128, 0.523);
+    background-color: #8c8885;
     gap: 20px;
 }
-.button{
+.updateBtn{
     margin-top: 10px;
     padding: 10px 20px;
     border-radius: 5px;
     border: 1px solid gray;
     place-self: center;
-    grid-column: span 2;
-    background-color: green;
-    color: white;
-    box-shadow: 0px 0px 5px rgb(79, 79, 79);
+    grid-column: span 2 ;
+}
+.editPageHead{
+    color: #fafcff;
+    text-shadow: 1px 1px 4px #0d0d0d;
+}
+/*  
+
+button{
+    margin-top: 10px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    place-self: center;
 }
 .address-field{
     display: grid;
@@ -44,9 +46,9 @@
 input{
     border: 1px solid gray;
     border-radius: 4px;
-    padding: 10px;
+    padding: 4px;
 }
 input:focus{
     outline: none;
-    box-shadow: 0px 0px 4px black;
 }
+ */

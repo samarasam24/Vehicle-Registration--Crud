@@ -4,9 +4,41 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
+    background-image: linear-gradient(to right bottom, #ffffff,#c1c8e4);
 }
 .table-container table,th,td{
-    border: 1px solid black;
+    border: 1px solid rgba(146, 146, 146, 0.85);
     border-collapse: collapse;
     padding: 15px;
+}
+.table{
+    background-color: rgba(255, 255, 255, 0.389);
+    
+}
+.actionBtn{
+    padding:5px 10px;
+}
+.edit{
+    color: rgb(234, 242, 234);
+    background-color: green;
+    border: 1px solid gray;
+    border-radius: 5px;
+    box-shadow: 1px 1px 4px black;
+}
+.delete{
+    color: white;
+    background-color: red;
+    border: 1px solid rgb(22, 22, 22);
+    border-radius: 5px;
+    box-shadow: 1px 1px 4px black;
+}
+.table-head{
+    color: #ffffff;
+    text-shadow: 1px 1px 5px rgb(79, 78, 78);
+}
+.backBtn{
+    margin-top: 20px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    padding: 10px 20px;
 }

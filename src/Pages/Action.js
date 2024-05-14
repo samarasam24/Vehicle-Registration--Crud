@@ -1,9 +1,10 @@
-export const OwnerName = (e) => {
+ export const OwnerName = (e) => {
+
     
-     return {
-        type:"OWNERNAME",
-        payload:e.target.value
-     };
+        return {
+            type:"OWNERNAME",
+            payload:e.target.value
+         };     
 };
 
 export const OwnerStreet = (e) => {
@@ -87,18 +88,39 @@ export const ChassisNumber = (e) => {
     };
 };
 
-export const HandleSubmit = (e) => {
 
+
+export const HandleSubmit = (e) => {
+ 
+ 
     e.preventDefault();
     return {
         type:"SUBMIT"
     };
+     
+
+       
+         
 };
 
 export const VehicleDelete = (id) => { 
     
+    
     return {
         type:'DELETE',
         payload:id
+    };
+};
+
+export const setInitialData = (data) => {
+    return {
+        type: 'SET_INITIAL_DATA',
+        payload: data
+    };
+};
+export const updateVehicle = (vehicle) => {
+    return {
+        type: 'UPDATE_VEHICLE',
+        payload: vehicle
     };
 };

@@ -1,45 +1,77 @@
-import { useEffect, useState } from 'react';
+import { useEffect,useState } from 'react';
 import '../PageStyles/TablePage.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { VehicleDelete } from './Action';
+import { useDispatch,useSelector } from 'react-redux';
+import { setInitialData, VehicleDelete } from './Action';
+import Spinner from './Spinner';
+import { Navbar } from './NavBar';
+
+
 export function TablePage(){
 
-    const [ data,setData] = useState([]);
-
+    const vehicleDetails = useSelector(state => state.vehicleDetails);
     const navigate = useNavigate();
-
+    const [loading, setLoading] = useState(true);
     const dispatch = useDispatch();
 
     useEffect( ()=> {
 
             axios.get("https://65b1d9849bfb12f6eafc3b4b.mockapi.io/Vehicle-Registration")
             .then( response =>{
-
-               
-                setData(response.data)
-      
+             
+                dispatch(setInitialData(response.data));
+                setLoading(false);
             })
     
             .catch( error => {
                   console.error(error);
+                  setLoading(false);
             }
             )
 
-        },[]
+        },[dispatch]
     );
 
+   const handleEdit = (id) => {
+      setLoading(true);
+      
+      setTimeout( () => {
+        navigate(`/editPage/${id}`);
+        setLoading(false);
+      },1000);
+   };
+ 
 
-    const vehicles = data.map( (valu) =>  {
-        console.log(valu.vehicleDetails);
-    });
 
-console.log(vehicles);
+    const handleDelete = (id,index) => {
+
+      const confirmDelete = window.confirm("Are you sure you want to delete this item?");
+      setLoading(true);
+      if (confirmDelete){
+        axios.delete(`https://65b1d9849bfb12f6eafc3b4b.mockapi.io/Vehicle-Registration/${id}`)
+        .then(() => {
+            dispatch( VehicleDelete(index));
+            setTimeout( () => {
+                setLoading(false);
+            },1000)
+        })
+        .catch(error => {
+            console.error("Failed to delete vehicle:", error);
+            setLoading(false);
+        });
+     };
+    };
+   
+
  
     return(
         <>
+
+        {loading && <Spinner />}
+        <Navbar/>
         <section className="table-container">
+            <h1 className='table-head'>Vehicel Details Table</h1>
             <table className="table">
                 <thead>
                     <tr>
@@ -56,8 +88,8 @@ console.log(vehicles);
                 </thead>
                 <tbody>
 
-                    {/* {
-                        data.map( (value,index) => {
+                    {
+                        vehicleDetails.map( (value,index) => {
                             return(
                                 <tr key={index}>
                                     <td>
@@ -70,11 +102,10 @@ console.log(vehicles);
                                         },
                                         {
                                             value.ownerAddress.ownerState
-                                        },
+                                        }-
                                         {
                                             value.ownerAddress.country
-                                        }
-                                      
+                                        }.
                                     </td>
                                     <td>
                                         {
@@ -107,19 +138,22 @@ console.log(vehicles);
                                         }
                                     </td>
                                     <td>
-                                        <button>Edit</button> {  }
+                                        <button
+                                       className='actionBtn edit'
+                                        onClick={ () => handleEdit(value.id)}><i class='bx bx-edit'></i> Edit</button> {  }
                                         <button 
-                                        onClick={ (index) => dispatch( VehicleDelete(index))
-                                        }>Delete</button>
+                                        className='actionBtn delete'
+                                        onClick={ () => handleDelete(value.id,index)
+                                        }> <i class='bx bxs-trash'></i>Delete</button>
                                     </td>
                                 </tr>
                             )
                         })
-                    } */}
+                    }
                                       
                 </tbody>
             </table>
-            <button onClick={() => navigate('/')}>Back</button>
+            <button  className='backBtn' onClick={() => navigate('/')}>Back</button>
         </section>
         </>
     );

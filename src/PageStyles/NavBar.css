@@ -1,0 +1,32 @@
+nav{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #adbbda;
+    color: #ede8f5;
+    text-shadow: 1px 1px 5px black;
+    height: 10vh;
+}
+nav div{
+    display: flex;
+    justify-content: space-around;
+    column-gap: 100px;
+}
+a{
+    text-decoration: none;
+    color: #ede8f5;
+    font-weight: bold;
+}
+.logobrand{
+    position: absolute;
+    top: -1%;
+    z-index: 4;
+}
+#logoImg{
+    position: absolute;
+    top: 0%;
+    left: 4%;
+    width: 10%;
+    height: 10%;
+    z-index: 1;
+}

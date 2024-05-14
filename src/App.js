@@ -3,6 +3,7 @@ import { store } from './Pages/Reducer';
 import { ConnectedForm } from './Pages/RegisterForm';
 import { BrowserRouter,Routes,Route } from 'react-router-dom';
 import { TablePage } from './Pages/TablePage';
+import { EditPage } from './Pages/EditPage';
 function App() {
   return (
     <BrowserRouter>
@@ -11,6 +12,7 @@ function App() {
          <Routes>
           <Route path='/' element={<ConnectedForm/>}/>
           <Route path='/table' element={<TablePage/>}/>
+          <Route path='/editPage/:id' element={<EditPage/>}/>
          </Routes>
 
       </Provider>
