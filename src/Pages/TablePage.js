@@ -6,20 +6,16 @@ import { useDispatch,useSelector } from 'react-redux';
 import { setInitialData, VehicleDelete } from './Action';
 import Spinner from './Spinner';
 import { Navbar } from './NavBar';
-import PopupMessage from './PopupMesg';
+
 
 
 export function TablePage(){
 
     const vehicleDetails = useSelector(state => state.vehicleDetails);
-    const getpop = useSelector( state => state.delConfirm);
+    const [deletingId, setDeletingId] = useState(null);
     const navigate = useNavigate();
     const [loading, setLoading] = useState(true);
-    const dispatch = useDispatch();
-    const [popupTrigger,setPopupTrigger] = useState(false);
-    // const [ popValue,setPopValue ] = useState(false);
-
-     console.log(getpop);
+    const dispatch = useDispatch(); 
 
     useEffect( ()=> {
 
@@ -47,34 +43,32 @@ export function TablePage(){
         setLoading(false);
       },1000);
    };
+   const handleDelete = (id) => {
+    setDeletingId(id);
+    const dialog = document.getElementById('deleteDialog');
+    dialog.showModal();
+  };
+
+  const handleConfirmDelete = () => {
+    setLoading(true);
+    const dialog = document.getElementById('deleteDialog');
+    dialog.close();
+    axios.delete(`https://65b1d9849bfb12f6eafc3b4b.mockapi.io/Vehicle-Registration/${deletingId}`)
+      .then(() => {
+        dispatch(VehicleDelete(vehicleDetails.findIndex(item => item.id === deletingId)));
+        setLoading(false);
+        setDeletingId(null);
+      })
+      .catch(error => {
+        console.error("Failed to delete vehicle:", error);
+        setLoading(false);
+        setDeletingId(null);
+      });
+  };
  
 
 
-    const handleDelete = (id,index) => {
-         
-      setPopupTrigger( !popupTrigger);
-      setLoading(true); 
-     
-
-      if(getpop)console.log("success");
-      
-      const confirmDelete = window.confirm("Are you sure you want to delete this item?");
-      
-
-      if (confirmDelete){
-        axios.delete(`https://65b1d9849bfb12f6eafc3b4b.mockapi.io/Vehicle-Registration/${id}`)
-        .then(() => {
-            dispatch( VehicleDelete(index));
-            setLoading(false);
-        })
-        .catch(error => {
-            console.error("Failed to delete vehicle:", error);
-            setLoading(false);
-        });
-     };
-     setLoading(false);
-
-    };
+    
    
 
  
@@ -83,7 +77,7 @@ export function TablePage(){
 
         {loading && <Spinner />}
         <Navbar/>
-        {popupTrigger && <PopupMessage/>}
+     
         <section className="table-container">
             <h1 className='table-head'>Vehicel Details Table</h1>
             <table className="table">
@@ -169,6 +163,15 @@ export function TablePage(){
             </table>
             <button  className='backBtn' onClick={() => navigate('/')}>Back</button>
         </section>
+        <dialog id="deleteDialog">
+        <div className='headMsgCon'><sapn>Confirmation Notification</sapn> <span className='x'
+         onClick={() => document.getElementById('deleteDialog').close()}>&times;</span></div>
+          <p>Are you sure you want to delete this item?  </p> 
+          <div className='div'>
+          <span className='no' onClick={() => document.getElementById('deleteDialog').close()}>No</span>
+          <span className='yes' onClick={handleConfirmDelete}>Yes</span>
+          </div>
+        </dialog>
         </>
     );
 };

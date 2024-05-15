@@ -125,9 +125,4 @@ export const updateVehicle = (vehicle) => {
     };
 };
 
-export const confirmDelete = () => {
-    return {
-        type: 'CONFIRM_DELETE',
-        payload:true
-    };
-};
+ 
