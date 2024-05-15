@@ -4,17 +4,18 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color:whitesmoke;
+    background-image: linear-gradient(to right bottom, #9d9d9d,#f1f1f1e9,#d7d7d7,#7e7e7e);
 }
 .editForm{
     display: grid;
     grid-template-columns: repeat(2,1fr);
     justify-content: center;
     border: 1px solid #A69080;
-    padding:35px 30px;
+    padding:  45px 30px;
     border-radius: 5px;
     box-shadow: 0px 0px 7px black;
-    background-color: #8c8885;
+    background: rgba(128, 128, 128, 0.636);
+    backdrop-filter: blur(10px);
     gap: 20px;
 }
 .updateBtn{
@@ -24,31 +25,27 @@
     border: 1px solid gray;
     place-self: center;
     grid-column: span 2 ;
+    background-color: #007F73;
+    color: #FFF7FC;
+    text-shadow: 1px 1px 4px black;
+    box-shadow: 1px 1px 4px black;
+}
+.updateBtn:hover{
+    box-shadow: 1px 1px 7px black;
+    color: #fafafa;
+    font-weight: bold;
+    text-shadow: 1px 1px 4px  rgb(37, 36, 36);
+    background-color: #65B741;
 }
 .editPageHead{
-    color: #fafcff;
-    text-shadow: 1px 1px 4px #0d0d0d;
+    color: #939391;
+    text-shadow: 1px 1px 2px #ffffff;
 }
-/*  
 
-button{
-    margin-top: 10px;
-    padding: 10px 20px;
-    border-radius: 5px;
-    border: 1px solid gray;
-    place-self: center;
+
+@media only screen and (max-width:1023px) and (min-width:724px){
+    .editForm{
+        gap: 7px;
+        padding:15px 10px;
+    }
 }
-.address-field{
-    display: grid;
-    grid-template-columns: auto auto;
-    gap: 10px;
-}
-input{
-    border: 1px solid gray;
-    border-radius: 4px;
-    padding: 4px;
-}
-input:focus{
-    outline: none;
-}
- */

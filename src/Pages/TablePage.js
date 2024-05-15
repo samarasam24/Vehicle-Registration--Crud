@@ -6,14 +6,20 @@ import { useDispatch,useSelector } from 'react-redux';
 import { setInitialData, VehicleDelete } from './Action';
 import Spinner from './Spinner';
 import { Navbar } from './NavBar';
+import PopupMessage from './PopupMesg';
 
 
 export function TablePage(){
 
     const vehicleDetails = useSelector(state => state.vehicleDetails);
+    const getpop = useSelector( state => state.delConfirm);
     const navigate = useNavigate();
     const [loading, setLoading] = useState(true);
     const dispatch = useDispatch();
+    const [popupTrigger,setPopupTrigger] = useState(false);
+    // const [ popValue,setPopValue ] = useState(false);
+
+     console.log(getpop);
 
     useEffect( ()=> {
 
@@ -45,22 +51,29 @@ export function TablePage(){
 
 
     const handleDelete = (id,index) => {
+         
+      setPopupTrigger( !popupTrigger);
+      setLoading(true); 
+     
 
+      if(getpop)console.log("success");
+      
       const confirmDelete = window.confirm("Are you sure you want to delete this item?");
-      setLoading(true);
+      
+
       if (confirmDelete){
         axios.delete(`https://65b1d9849bfb12f6eafc3b4b.mockapi.io/Vehicle-Registration/${id}`)
         .then(() => {
             dispatch( VehicleDelete(index));
-            setTimeout( () => {
-                setLoading(false);
-            },1000)
+            setLoading(false);
         })
         .catch(error => {
             console.error("Failed to delete vehicle:", error);
             setLoading(false);
         });
      };
+     setLoading(false);
+
     };
    
 
@@ -70,6 +83,7 @@ export function TablePage(){
 
         {loading && <Spinner />}
         <Navbar/>
+        {popupTrigger && <PopupMessage/>}
         <section className="table-container">
             <h1 className='table-head'>Vehicel Details Table</h1>
             <table className="table">

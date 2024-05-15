@@ -6,6 +6,8 @@ nav{
     color: #ede8f5;
     text-shadow: 1px 1px 5px black;
     height: 10vh;
+    box-shadow: 0px 3px 5px rgb(52, 51, 51) !important;
+    position: sticky;
 }
 nav div{
     display: flex;
@@ -16,6 +18,12 @@ a{
     text-decoration: none;
     color: #ede8f5;
     font-weight: bold;
+    padding: 5px 10px;
+}
+a:hover{
+    border-radius: 5px;
+    background-color: gray;
+    box-shadow: 0px 0px 4px rgb(248, 248, 248);
 }
 .logobrand{
     position: absolute;
@@ -24,9 +32,22 @@ a{
 }
 #logoImg{
     position: absolute;
-    top: 0%;
+    top: 10%;
     left: 4%;
     width: 10%;
-    height: 10%;
+    height: 90%;
     z-index: 1;
+}
+@media only screen and (max-width:1023px) and (min-width:724px){
+    .logobrand{
+        top: -13%;
+        left: 14%;
+    }
+    nav{
+        justify-content: space-evenly;
+    }
+    nav div{ 
+        margin-left: 150px;
+        column-gap: 70px;
+    }
 }

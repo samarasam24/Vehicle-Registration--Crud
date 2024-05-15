@@ -124,3 +124,10 @@ export const updateVehicle = (vehicle) => {
         payload: vehicle
     };
 };
+
+export const confirmDelete = () => {
+    return {
+        type: 'CONFIRM_DELETE',
+        payload:true
+    };
+};

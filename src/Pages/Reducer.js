@@ -16,6 +16,7 @@ const  initialValue = {
     colour:'',
     year:'',
     chassisNumber:'',
+    delConfirm:false
 };
 
 function Reducer( state = initialValue,action ){
@@ -170,6 +171,14 @@ function Reducer( state = initialValue,action ){
                     vehicle.id === action.payload.id ? action.payload : vehicle
                     )
                     };
+            
+        
+           case 'CONFIRM_DELETE':
+             
+            return {
+                ...state,
+                delConfirm:action.payload
+            }
     
         default:
             return state;

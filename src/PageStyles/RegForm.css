@@ -4,15 +4,19 @@
     padding-top: 40px;
     align-items: center;
     height: 100vh;
-   background-color: #ede8f5;
+    background-image: url(../images/backgroundForm.jpg);
 }
 .formHead{
-    color: #874f41;
-    text-shadow: 1px 1px 5px #adbbda;
+    color: #935646;
+    text-shadow: 1px 1px 6px #070708;
 }
 .flex{
     display: flex;
     flex-direction: column;
+}
+label{
+    color: white;
+    text-shadow: 1px 1px 3px rgb(8, 8, 8);
 }
 .form{
     display: grid;
@@ -22,7 +26,7 @@
     padding:35px 30px;
     border-radius: 5px;
     box-shadow: 0px 0px 7px black;
-    background-color:rgba(128, 128, 128, 0.523);
+    background-color:rgba(195, 187, 187, 0.523);
     gap: 20px;
 }
 .button{
@@ -48,5 +52,26 @@ input{
 }
 input:focus{
     outline: none;
-    box-shadow: 0px 0px 4px black;
+    box-shadow: 0px 0px 4px rgb(154, 150, 150);
+}
+span{
+    color: #d33017;
+    font-size: 13px;
+    text-shadow: 0px 0px 0px black;
+    font-weight: bold;
+    font-family: "Montserrat", sans-serif !important;
+}
+
+@media only screen and (max-width:1023px) and (min-width:724px){
+    .form{
+        gap: 7px;
+        padding:15px 10px;
+    }
+    input{
+        padding:10px 2px;
+        
+    }
+    .address-field{
+        gap: 2px;
+    }
 }
