@@ -1,18 +1,22 @@
 .editForm-container{
     display: flex;
     flex-direction: column;
-    padding-top: 40px;
+    /* padding-top: 40px; */
     align-items: center;
     height: 100vh;  
-    background-color:#121212;
+    /* background-color:#121212; */
+    background-color: #ffffff;
 }
 .editForm{
     display: grid;
     grid-template-columns: repeat(2,1fr);
     justify-content: center; 
-    padding:  45px 30px;
+    margin-top: 80px;
+    padding:  20px 30px;
     border-radius: 5px; 
-    background: rgba(128, 128, 128, 0);
+    /* background: rgba(128, 128, 128, 0); */
+    background-color: #ffffff;
+    box-shadow: 0px 0px 6px black;
     backdrop-filter: blur(10px);
     gap: 20px;
 }
@@ -23,17 +27,21 @@
     border: 1px solid rgb(110, 224, 54);
     place-self: center;
     grid-column: span 2;
-    background-color: rgb(4, 93, 4);
+    background-color: rgba(20, 85, 20, 0.696);
     color: white; 
 }
 .updateBtn:hover{
-    background-color: rgb(34, 214, 34);
+    background-color: rgb(4, 93, 4);
     text-shadow: 1px 1px 3px black;
 }
 .editPageHead{
-    margin-top: 60px;
-    color: #e6735c;
-    text-shadow: 1px 1px 2px #111010;
+    grid-column:  span 2 ;
+    place-self: center;
+    /* margin-top: 60px; */
+    /* color: #e6735c; */
+    color: #493530;
+    font-size: 28px; 
+    /* text-shadow: 1px 1px 2px #111010; */
 }
 
 

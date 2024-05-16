@@ -66,10 +66,10 @@ function RegForm({Data}){
          
         <section className='form-container'>
 
-            <h1 className='formHead'> Register Form</h1>
+           
 
             <form className='form'>
-
+                   <h1 className='formHead'> Register Form</h1>
               <div className='flex'>
                 <label>Name:</label>
                 <input 

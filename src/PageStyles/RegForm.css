@@ -1,33 +1,49 @@
 .form-container{
     display: flex;
     flex-direction: column;
-    padding-top: 40px;
-    align-items: center;
-    height: 100vh;  
-    background-color:#121212;
+    /* padding-top: 40px; */
+    align-items: center; 
+    min-height: 100vh;
+    /* background-color:#121212; */
+    /* background-color: #ffffff; */
+    /* background-color: #0e0d0d15; */
 }
 body{
     overflow-x: hidden;
 }
 .formHead{
-    margin-top:80px;
-    color: #d67b64; 
+    /* margin-top:80px; */
+    /* color: #d67b64;  */
+    grid-column:  span 2 ;
+    place-self: center;
+    color: #493530;
+    font-size: 30px;
+    font-weight: 600; 
+    font-family: "Kanit", sans-serif !important;
 }
 .flex{
     display: flex;
     flex-direction: column;
 }
 label{
-    color: white;
-    text-shadow: 1px 1px 3px rgb(8, 8, 8);
+    /* color: white; */
+    color:black;
+    /* text-shadow: 1px 1px 3px rgb(8, 8, 8); */
 }
 .form{
     display: grid;
+    margin-top: 80px;
     grid-template-columns: repeat(2,1fr);
+    padding-top: 0px !important;
     justify-content: center; 
     padding:35px 30px;
     border-radius: 5px; 
     gap: 20px;
+    box-shadow: 0px 0px 8px black;
+    /* background-color: #f8f9fa; */
+    background-color: #ffffff91;
+    /* border: 1px solid rgb(222, 221, 221); */ 
+    margin-bottom:10px;
 }
 .button{
     margin-top: 10px;
@@ -36,11 +52,11 @@ label{
     border: 1px solid rgb(110, 224, 54);
     place-self: center;
     grid-column: span 2;
-    background-color: rgb(4, 93, 4);
+    background-color: rgba(20, 85, 20, 0.696);
     color: white; 
 }
 .button:hover{
-    background-color: rgb(34, 214, 34);
+    background-color: rgb(4, 93, 4);
     text-shadow: 1px 1px 3px black;
 }
 .address-field{
@@ -52,14 +68,18 @@ input{
     border: none;
     /* background-color: rgba(255, 255, 255, 0.107); */
     background-color: transparent;
-    border-radius: 4px;
-    color: rgba(255, 255, 255, 0.71);
+    /* border-radius: 4px; */
+    /* color: rgba(255, 255, 255, 0.71); */
+    color: rgb(49, 47, 47);
     padding: 10px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.107);
-    border-right: 1px solid rgba(255, 255, 255, 0.107);
+    /* border-bottom: 1px solid rgba(255, 255, 255, 0.107); */
+    border-bottom: 1px solid rgba(115, 113, 113, 0.808);
+    /* border-right: 1px solid rgba(255, 255, 255, 0.107); */
+    /* border-right: 1px solid rgba(115, 113, 113, 0.808); */
 }
 input:focus{
     outline: none;
+    border-radius: 4px;
     box-shadow: 0px 0px 4px rgb(154, 150, 150);
 }
 span{

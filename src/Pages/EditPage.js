@@ -104,10 +104,10 @@ export function EditPage() {
         <Navbar/>
         <section className='editForm-container'>
 
-            <h1 className='editPageHead'>Edit Vehicle Details</h1>
+           
 
             <form className='editForm' onSubmit={handleSubmit}>
-
+            <h1 className='editPageHead'>Edit Vehicle Details</h1>
                 <div className='flex'>
                 <label>Name:</label>
                 <input

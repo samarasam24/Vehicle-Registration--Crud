@@ -4,9 +4,10 @@ nav{
     align-items: center; 
     color: #ede8f5; 
     height: 10vh;
-    background-color: #121212;
-    /* background-color: #F7EFE5; */
-    box-shadow: 0px 3px 5px rgba(22, 21, 21, 0.399) !important;
+    /* background-color: #121212; */
+    background-color: #f6f6f6e4;
+    /* box-shadow: 0px 3px 5px rgba(22, 21, 21, 0.399) !important; */
+    box-shadow: 0px 0px 3px rgba(22, 21, 21, 0.399) !important;
     position: fixed;
     top: 0;
     left: 0;
@@ -20,22 +21,31 @@ nav div{
 }
 a{
     text-decoration: none;
-    color: #ede8f5;
+    color: #45474B;
+    font-weight: bolder !important;
+    font-size: 18px;
+    /* color: #ede8f5; */
     font-weight: bold;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     padding: 5px 10px;
 }
 a:hover{
     border-radius: 5px;
     background-color: rgb(222, 128, 33);
-    text-shadow: 1px 1px 3px black;
+    /* text-shadow: 1px 1px 3px black; */
+    text-shadow: 1px 1px 1px white;
     box-shadow: 0px 0px 4px rgb(11, 11, 11);
 }
 .logobrand{
     /* position: absolute; */
-    text-shadow: 1px 1px 3px black;
+    /* text-shadow: 1px 1px 3px black; */
+    text-shadow: 1px 0px 1px black;
+    font-family: "Poetsen One", sans-serif;
+    font-weight: 400;
     top: -1%;
     z-index: 4;
-    color: rgb(238, 154, 94);
+    /* color: rgb(238, 154, 94); */
+    color: #45413c;
 }
 
 @media only screen and (max-width:1023px) and (min-width:724px){

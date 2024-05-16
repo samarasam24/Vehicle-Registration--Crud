@@ -83,7 +83,11 @@ export function TablePage(){
         <Navbar/>
      
         <section className="table-container">
-            <h1 className='table-head'>Vehicel Details Table</h1>
+            <div className='headContainer'>
+                 <h1 className='table-head'>Vehicel Details Table</h1>
+                 <button  className='backBtn' onClick={() => navigate('/')}><i className='bx bx-plus-circle ' ></i> {  }Add User</button>
+            </div>
+           
             <table className="table">
                 <thead>
                     <tr>
@@ -103,7 +107,7 @@ export function TablePage(){
                     {
                         vehicleDetails.map( (value,index) => {
                             return(
-                                <tr key={index}>
+                                <tr key={index} className= { index % 2 === 0 ? '':'colored'}>
                                     <td>
                                         {value.ownerName}
                                     </td>
@@ -152,11 +156,11 @@ export function TablePage(){
                                     <td>
                                         <button
                                        className='actionBtn edit'
-                                        onClick={ () => handleEdit(value.id)}><i class='bx bx-edit'></i> Edit</button> {  }
+                                        onClick={ () => handleEdit(value.id)}><i class='bx bx-edit'></i> </button> {  }
                                         <button 
                                         className='actionBtn delete'
                                         onClick={ () => handleDelete(value.id,index)
-                                        }> <i class='bx bxs-trash'></i>Delete</button>
+                                        }> <i class='bx bxs-trash'></i></button>
                                     </td>
                                 </tr>
                             )
@@ -165,14 +169,16 @@ export function TablePage(){
                                       
                 </tbody>
             </table>
-            <button  className='backBtn' onClick={() => navigate('/')}>Back</button>
+            
         </section>
         <dialog id="deleteDialog"  className={ isActive ? ' visible' : 'invisible'}>
         <div className='headMsgCon'><sapn>Confirmation Notification</sapn> <span className='x'
          onClick={() => document.getElementById('deleteDialog').close()}>&times;</span></div>
           <p>Are you sure you want to delete this item?  </p> 
           <div className='div'>
-          <span className='no' onClick={() => document.getElementById('deleteDialog').close()}>No</span>
+          <span className='no' onClick={() => {document.getElementById('deleteDialog').close()
+            setIsActive(!isActive)
+          }}>No</span>
           <span className='yes' onClick={handleConfirmDelete}>Yes</span>
           </div>
         </dialog>
