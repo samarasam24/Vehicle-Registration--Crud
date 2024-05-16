@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { Navbar } from './NavBar';
 import { useState } from 'react';
 import { regexDate, regexNumber } from '../RegExp/RegExp';
+ 
 
 
 
@@ -62,6 +63,7 @@ function RegForm({Data}){
     return(
         <>
         <Navbar/>
+         
         <section className='form-container'>
 
             <h1 className='formHead'> Register Form</h1>
@@ -196,8 +198,8 @@ function RegForm({Data}){
                     Register
                 </button>
 
-            </form>
-
+            </form> 
+            
         </section>
         </>
     );

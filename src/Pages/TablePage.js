@@ -16,6 +16,7 @@ export function TablePage(){
     const navigate = useNavigate();
     const [loading, setLoading] = useState(true);
     const dispatch = useDispatch(); 
+    const [isActive, setIsActive] = useState(false);
 
     useEffect( ()=> {
 
@@ -44,6 +45,8 @@ export function TablePage(){
       },1000);
    };
    const handleDelete = (id) => {
+    setIsActive(!isActive);
+
     setDeletingId(id);
     const dialog = document.getElementById('deleteDialog');
     dialog.showModal();
@@ -53,6 +56,7 @@ export function TablePage(){
     setLoading(true);
     const dialog = document.getElementById('deleteDialog');
     dialog.close();
+    setIsActive(!isActive);
     axios.delete(`https://65b1d9849bfb12f6eafc3b4b.mockapi.io/Vehicle-Registration/${deletingId}`)
       .then(() => {
         dispatch(VehicleDelete(vehicleDetails.findIndex(item => item.id === deletingId)));
@@ -69,7 +73,7 @@ export function TablePage(){
 
 
     
-   
+   console.log(isActive);
 
  
     return(
@@ -163,7 +167,7 @@ export function TablePage(){
             </table>
             <button  className='backBtn' onClick={() => navigate('/')}>Back</button>
         </section>
-        <dialog id="deleteDialog">
+        <dialog id="deleteDialog"  className={ isActive ? ' visible' : 'invisible'}>
         <div className='headMsgCon'><sapn>Confirmation Notification</sapn> <span className='x'
          onClick={() => document.getElementById('deleteDialog').close()}>&times;</span></div>
           <p>Are you sure you want to delete this item?  </p> 

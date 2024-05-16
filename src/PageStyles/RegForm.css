@@ -3,12 +3,15 @@
     flex-direction: column;
     padding-top: 40px;
     align-items: center;
-    height: 100vh;
-    background-image: url(../images/backgroundForm.jpg);
+    height: 100vh;  
+    background-color:#121212;
+}
+body{
+    overflow-x: hidden;
 }
 .formHead{
-    color: #935646;
-    text-shadow: 1px 1px 6px #070708;
+    margin-top:80px;
+    color: #d67b64; 
 }
 .flex{
     display: flex;
@@ -21,24 +24,24 @@ label{
 .form{
     display: grid;
     grid-template-columns: repeat(2,1fr);
-    justify-content: center;
-    border: 1px solid gray;
+    justify-content: center; 
     padding:35px 30px;
-    border-radius: 5px;
-    box-shadow: 0px 0px 7px black;
-    background-color:rgba(195, 187, 187, 0.523);
+    border-radius: 5px; 
     gap: 20px;
 }
 .button{
     margin-top: 10px;
     padding: 10px 20px;
     border-radius: 5px;
-    border: 1px solid gray;
+    border: 1px solid rgb(110, 224, 54);
     place-self: center;
     grid-column: span 2;
-    background-color: green;
-    color: white;
-    box-shadow: 0px 0px 5px rgb(79, 79, 79);
+    background-color: rgb(4, 93, 4);
+    color: white; 
+}
+.button:hover{
+    background-color: rgb(34, 214, 34);
+    text-shadow: 1px 1px 3px black;
 }
 .address-field{
     display: grid;
@@ -46,21 +49,28 @@ label{
     gap: 10px;
 }
 input{
-    border: 1px solid gray;
+    border: none;
+    /* background-color: rgba(255, 255, 255, 0.107); */
+    background-color: transparent;
     border-radius: 4px;
+    color: rgba(255, 255, 255, 0.71);
     padding: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.107);
+    border-right: 1px solid rgba(255, 255, 255, 0.107);
 }
 input:focus{
     outline: none;
     box-shadow: 0px 0px 4px rgb(154, 150, 150);
 }
 span{
-    color: #d33017;
+    color: #e43c09eb;
     font-size: 13px;
-    text-shadow: 0px 0px 0px black;
-    font-weight: bold;
+    text-shadow: 0px 0px 0px rgb(82, 81, 81); 
     font-family: "Montserrat", sans-serif !important;
 }
+
+
+ 
 
 @media only screen and (max-width:1023px) and (min-width:724px){
     .form{

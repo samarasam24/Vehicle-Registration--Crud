@@ -1,13 +1,17 @@
 nav{
     display: flex;
     justify-content: space-around;
-    align-items: center;
-    background-color: #adbbda;
-    color: #ede8f5;
-    text-shadow: 1px 1px 5px black;
+    align-items: center; 
+    color: #ede8f5; 
     height: 10vh;
-    box-shadow: 0px 3px 5px rgb(52, 51, 51) !important;
-    position: sticky;
+    background-color: #121212;
+    /* background-color: #F7EFE5; */
+    box-shadow: 0px 3px 5px rgba(22, 21, 21, 0.399) !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
 }
 nav div{
     display: flex;
@@ -22,22 +26,18 @@ a{
 }
 a:hover{
     border-radius: 5px;
-    background-color: gray;
-    box-shadow: 0px 0px 4px rgb(248, 248, 248);
+    background-color: rgb(222, 128, 33);
+    text-shadow: 1px 1px 3px black;
+    box-shadow: 0px 0px 4px rgb(11, 11, 11);
 }
 .logobrand{
-    position: absolute;
+    /* position: absolute; */
+    text-shadow: 1px 1px 3px black;
     top: -1%;
     z-index: 4;
+    color: rgb(238, 154, 94);
 }
-#logoImg{
-    position: absolute;
-    top: 10%;
-    left: 4%;
-    width: 10%;
-    height: 90%;
-    z-index: 1;
-}
+
 @media only screen and (max-width:1023px) and (min-width:724px){
     .logobrand{
         top: -13%;
