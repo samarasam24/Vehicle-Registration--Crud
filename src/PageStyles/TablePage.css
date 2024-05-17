@@ -5,16 +5,23 @@
     align-items: center;
     min-height: 100vh; 
     /* background-color:#121212; */
-    background-color: #ebe9e9;
-
+    /* background-color: #ebe9e9; */
+    /* background-color: #e1e6e9; */
 }
 .table-container table,th,td{
     border-bottom: 1px solid rgba(146, 146, 146, 0.264);
     border-collapse: collapse;
-    padding: 15px;
+    padding: 15px; 
+}
+table{
+    box-shadow: 1px 1px 4px black;
+    border-radius: 4px;
 }
 .colored{
-    background-color: rgba(128, 128, 128, 0.116);
+    background-color: #edf3f5 !important;
+}
+.name_table{
+    border-right: 1px solid rgba(146, 146, 146, 0.264);
 }
 .addUser{
     color: green !important;
@@ -24,7 +31,7 @@ th{
     text-align: center;
     /* text-shadow: 1px 1px 3px black; */
     /* background-color: #b481478f; */
-    background-color: rgba(110, 110, 110, 0.509);
+    /* background-color: rgba(110, 110, 110, 0.509); */
 }
 /* .table{
     background-color: rgba(255, 255, 255, 0.283);
@@ -39,13 +46,16 @@ th{
 }
 .headContainer button{
     position: absolute;
-    left: 3%;
+    left: 14%;
 }
 
 td{
+    text-align: center;
     /* color: rgba(225, 223, 223, 0.689); */
     color: rgba(28, 27, 27, 0.85);
     font-size: 20px;
+    background-color: #f6f9fa;
+    /* border-right: 1px solid rgba(146, 146, 146, 0.264); */
 }
 .actionBtn{
     padding:5px 10px;
@@ -79,20 +89,29 @@ td{
     margin-top: 20px;
     border-radius: 5px; 
     padding: 10px 20px;
-    background-image: linear-gradient( to left bottom,#d17a3b ,#a3553f); 
+    background-color: #7898a3;
+    /* background-image: linear-gradient( to left bottom,#d17a3b ,#a3553f);  */
     color: rgb(255, 255, 255);
-    box-shadow: 0px 0px 3px black;
-    border: 1px solid  #d17a3b ;
+    box-shadow: 0px 0px 1px black;
+    border: none;
+    /* border: 1px solid  #d17a3b ; */
     font-weight: bolder;
     text-shadow: 1px 1px 4px black;
 }
+.backBtn:hover{
+    background-color: #1b4b5c;
+}
 #deleteDialog{
-    border: 1px solid rgb(136, 133, 133); 
+    border: 1px solid rgba(136, 133, 133, 0); 
     border-radius: 5px;
-    display: grid; 
-    row-gap: 8px;
+    display: grid;  
     padding-top: 10px !important;
     padding: 30px 20px;
+}
+.headmsgconfirm{
+    color: rgb(8, 6, 6);
+    font-family: serif;
+    font-weight: bold;
 }
 .headMsgCon{
     display: flex;
@@ -107,10 +126,14 @@ td{
     place-self: end;
     cursor: pointer;
 } 
+.x:hover{
+    text-shadow: 0px 0px 2px rgb(10, 6, 6);
+    color: rgb(249, 6, 6) !important;
+}
 #deleteDialog .div{
    display: flex;
    justify-content: end;
-   column-gap: 10px;
+   column-gap: 18px;
 }
 .no{
     color: white !important;
@@ -119,6 +142,10 @@ td{
     padding: 4px 6px;
     cursor: pointer;
 }
+.no:hover{
+    background-color: rgb(57, 57, 57);
+    text-shadow: 1px 1px 3px black;
+}
 .yes{
     color: white !important;
     background-color: rgb(207, 100, 100);
@@ -126,7 +153,15 @@ td{
     padding: 4px 6px;
     cursor: pointer;
 }
-
+.yes:hover{
+    background-color: rgb(208, 48, 48);
+    text-shadow: 1px 1px 5px black; 
+}
+#msg-content{
+    border-bottom: 1px solid rgba(128, 128, 128, 0.091);
+    padding: 10px 0px;
+    border-top:  1px solid rgba(128, 128, 128, 0.091);
+}
 @media only screen and (max-width:1023px) and (min-width:724px){
     .table-container table,th,td{
         padding: 3px;

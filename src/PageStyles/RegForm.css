@@ -4,9 +4,9 @@
     /* padding-top: 40px; */
     align-items: center; 
     min-height: 100vh;
-    /* background-color:#121212; */
-    /* background-color: #ffffff; */
-    /* background-color: #0e0d0d15; */
+    /* background-color: #9393941f; */
+    
+    background-color: #ffffff; 
 }
 body{
     overflow-x: hidden;
@@ -16,7 +16,8 @@ body{
     /* color: #d67b64;  */
     grid-column:  span 2 ;
     place-self: center;
-    color: #493530;
+    /* color: #493530; */
+    color: #134156;
     font-size: 30px;
     font-weight: 600; 
     font-family: "Kanit", sans-serif !important;
@@ -27,21 +28,24 @@ body{
 }
 label{
     /* color: white; */
-    color:black;
+    color:rgba(0, 0, 0, 0.727);
+    font-family: "Poetsen One", sans-serif;
+    font-weight: 100;
+    font-size: 14px;
     /* text-shadow: 1px 1px 3px rgb(8, 8, 8); */
 }
 .form{
     display: grid;
-    margin-top: 80px;
+    margin-top: 90px;
     grid-template-columns: repeat(2,1fr);
     padding-top: 0px !important;
     justify-content: center; 
-    padding:35px 30px;
+    padding:20px 25px;
     border-radius: 5px; 
     gap: 20px;
-    box-shadow: 0px 0px 8px black;
-    /* background-color: #f8f9fa; */
-    background-color: #ffffff91;
+    box-shadow: 0px 0px 10px black;
+    background-color: #ffffff;
+    /* background-color: #f6f9fa; */
     /* border: 1px solid rgb(222, 221, 221); */ 
     margin-bottom:10px;
 }
@@ -68,19 +72,21 @@ input{
     border: none;
     /* background-color: rgba(255, 255, 255, 0.107); */
     background-color: transparent;
-    /* border-radius: 4px; */
     /* color: rgba(255, 255, 255, 0.71); */
+    border: 1px solid rgba(115, 113, 113, 0.491);
+    box-shadow: 2px 2px 2px rgb(154, 150, 150);
+    background-color: #1034450a; 
+    border-radius: 4px;
     color: rgb(49, 47, 47);
     padding: 10px;
-    /* border-bottom: 1px solid rgba(255, 255, 255, 0.107); */
-    border-bottom: 1px solid rgba(115, 113, 113, 0.808);
-    /* border-right: 1px solid rgba(255, 255, 255, 0.107); */
-    /* border-right: 1px solid rgba(115, 113, 113, 0.808); */
+   
+    /* border-bottom: 1px solid rgba(115, 113, 113, 0.491); */
 }
 input:focus{
     outline: none;
     border-radius: 4px;
-    box-shadow: 0px 0px 4px rgb(154, 150, 150);
+    box-shadow: 2px 2px 4px rgb(59, 58, 58);
+    background-color: #1034450a; 
 }
 span{
     color: #e43c09eb;

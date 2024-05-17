@@ -12,8 +12,8 @@ export function Navbar() {
 
              
                <div>
-               <a href='/'>Form</a>
-                <a href='/table'>List</a>
+                 <a href='/'>Form</a>
+                 <a href='/table'>List</a>
                </div>
              
         </nav>

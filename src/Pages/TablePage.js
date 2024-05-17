@@ -107,53 +107,54 @@ export function TablePage(){
                     {
                         vehicleDetails.map( (value,index) => {
                             return(
-                                <tr key={index} className= { index % 2 === 0 ? '':'colored'}>
-                                    <td>
+                                <tr key={index} >
+                                    <td className= { index % 2 === 0 ? 'name_table':'colored name_table'}>
                                         {value.ownerName}
                                     </td>
-                                    <td>
+                                    <td className= { index % 2 === 0 ? '':'colored'}>
                                         {value.ownerAddress.street},
                                         {
                                             value.ownerAddress.city
                                         },
+                                        
                                         {
                                             value.ownerAddress.ownerState
-                                        }-
+                                        }-<br/>
                                         {
                                             value.ownerAddress.country
                                         }.
                                     </td>
-                                    <td>
+                                    <td className= { index % 2 === 0 ? '':'colored'}>
                                         {
                                             value.phoneNumber
                                         }
                                     </td>
-                                    <td>
+                                    <td className= { index % 2 === 0 ? '':'colored'}>
                                         {
                                             value.makerName
                                         }
                                     </td>
-                                    <td>
+                                    <td className= { index % 2 === 0 ? '':'colored'}>
                                         {
                                             value.modelName
                                         }
                                     </td>
-                                    <td>
+                                    <td className= { index % 2 === 0 ? '':'colored'}>
                                         {
                                             value.colour
                                         }
                                     </td>
-                                    <td>
+                                    <td className= { index % 2 === 0 ? '':'colored'}>
                                         {
                                             value.year
                                         }
                                     </td>
-                                    <td>
+                                    <td className= { index % 2 === 0 ? '':'colored'}>
                                         {
                                             value.chassisNumber
                                         }
                                     </td>
-                                    <td>
+                                    <td className= { index % 2 === 0 ? '':'colored'}>
                                         <button
                                        className='actionBtn edit'
                                         onClick={ () => handleEdit(value.id)}><i class='bx bx-edit'></i> </button> {  }
@@ -171,10 +172,11 @@ export function TablePage(){
             </table>
             
         </section>
+
         <dialog id="deleteDialog"  className={ isActive ? ' visible' : 'invisible'}>
-        <div className='headMsgCon'><sapn>Confirmation Notification</sapn> <span className='x'
+        <div className='headMsgCon'><sapn className='headmsgconfirm' >Confirmation Notification</sapn> <span className='x'
          onClick={() => document.getElementById('deleteDialog').close()}>&times;</span></div>
-          <p>Are you sure you want to delete this item?  </p> 
+          <p id='msg-content'>Are you sure you want to delete this item?  </p> 
           <div className='div'>
           <span className='no' onClick={() => {document.getElementById('deleteDialog').close()
             setIsActive(!isActive)
