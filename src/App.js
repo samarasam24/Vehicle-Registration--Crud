@@ -1,18 +1,20 @@
 import { Provider } from 'react-redux';
 import { store } from './Pages/Reducer';
 import { ConnectedForm } from './Pages/RegisterForm';
-import { BrowserRouter,Routes,Route } from 'react-router-dom';
+import { BrowserRouter,Routes,Route,Navigate } from 'react-router-dom';
 import { TablePage } from './Pages/TablePage';
 import { EditPage } from './Pages/EditPage';
+import { Navbar } from './Pages/NavBar';
 function App() {
   return (
     <BrowserRouter>
        <Provider store={store}>
-
+       <Navbar/>
          <Routes>
-          <Route path='/' element={<ConnectedForm/>}/>
-          <Route path='/table' element={<TablePage/>}/>
-          <Route path='/editPage/:id' element={<EditPage/>}/>
+          <Route path='/' element={<Navigate to='/create-vehicle-details' />} />
+          <Route path='/create-vehicle-details' element={<ConnectedForm />} />   
+          <Route path='/vehicle-details' element={<TablePage/>}/>
+          <Route path='/edit-vehicle-details?/:id' element={<EditPage/>}/>
          </Routes>
 
       </Provider>

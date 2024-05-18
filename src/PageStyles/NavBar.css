@@ -1,12 +1,9 @@
 nav{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;  
-    height: 10vh;
-    /* background-color: #121212; */
-    background-color: #ededed7e;
-    /* background-color: #f6f6f6e4; */
-    /* box-shadow: 0px 3px 5px rgba(22, 21, 21, 0.399) !important; */
+    height: 10vh; 
+    background-color: #ededed; 
     box-shadow: 0px 0px 4px rgba(22, 21, 21, 0.696) !important;
     position: fixed;
     top: 0;
@@ -15,39 +12,50 @@ nav{
     z-index: 1000;
 }
 nav div{
+    margin-right: 80px;
     display: flex;
-    justify-content: space-around;
-    column-gap: 100px;
+    align-items: center;
+    justify-content: end;
+    column-gap: 20px;
+}
+img{
+    border-radius: 50%;
+    width: 7%;
+    height: 7%;
 }
 a{
     text-decoration: none;
     color: #45474B;
     font-weight: bolder !important;
-    font-size: 18px;
-    /* color: #ede8f5; */
+    font-size: 15px;  
     font-weight: bold;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     padding: 5px 10px;
 }
+.active-link{
+    border-radius: 5px;
+    background-color: #426778c7; 
+    text-shadow: 1px 1px 1px rgb(29, 28, 28);
+    box-shadow: 0px 0px 4px rgb(250, 249, 249); 
+    color: #f1f3f2;
+}
 a:hover{
     border-radius: 5px;
-    background-color: #426778;
-    /* background-color: rgb(222, 128, 33); */
-    /* text-shadow: 1px 1px 3px black; */
+    background-color: #426778; 
     text-shadow: 1px 1px 1px rgb(29, 28, 28);
     box-shadow: 0px 0px 4px rgb(11, 11, 11); 
     color: #f1f2f3;
 }
-.logobrand{
-    /* position: absolute; */
-    /* text-shadow: 1px 1px 3px black; */
+.deactive-link{
+    display: none;
+}
+.logobrand{ 
     text-shadow: 1px 0px 1px black;
     font-family: "Poetsen One", sans-serif;
     font-weight: 400;
     top: -1%;
     z-index: 4;
-    /* color: rgb(238, 154, 94); */
-    /* color: #45413c; */
+    margin-left: 70px; 
     color:#0d0d0d;
 }
 

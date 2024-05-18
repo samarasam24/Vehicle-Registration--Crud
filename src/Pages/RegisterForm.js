@@ -1,11 +1,10 @@
 import { connect } from 'react-redux';
 import '../PageStyles/RegForm.css';
-import { MakeName, OwnerCity, OwnerCountry, OwnerName, OwnerState, OwnerStreet, PhoneNum,MakeModel,Year,Color,ChassisNumber, HandleSubmit } from './Action';
+import { MakeName , OwnerName, OwnerStreet, PhoneNum,MakeModel,Year,Color,ChassisNumber, HandleSubmit, ResetForm } from './Action';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { Navbar } from './NavBar';
 import { useState } from 'react';
-import { regexDate, regexNumber } from '../RegExp/RegExp';
+import { regexCaps, regexDate, regexNumber } from '../RegExp/RegExp';
  
 
 
@@ -29,19 +28,33 @@ function RegForm({Data}){
     const numberCheck = regexNumber.test(Data.phoneNumber);
     const yearCheck = regexDate.test(Data.year);
     
+    
     const validateForm = () => {
         const errors = {};
+        if (!regexCaps.test(Data.ownerName)) errors.nameError = "Name must be alphabetic characters!";
         if (!Data.ownerName) errors.nameError = "Name is required!";
-        if (!numberCheck) errors.phError = "Phone Number Should be 10 Digits!";
-        if (!Data.makerName) errors.makeError = "Make Name is required!";
-        if (!Data.modelName) errors.moError = "Model Name is required!";
+
+        if (!numberCheck) errors.phError = "Phone number should be 10 digits!";
+        if (!Data.phoneNumber) errors.phError = "Phone number is required!";
+
+        if (!regexCaps.test(Data.makerName)) errors.makeError = "Maker name must be alphabetic characters!";
+        if (!Data.makerName) errors.makeError = "Make name is required!";
+
+        if (!regexCaps.test(Data.modelName)) errors.moError = "Model name must be alphabetic characters!";
+        if (!Data.modelName) errors.moError = "Model name is required!";
+
+        if (!regexCaps.test(Data.colour)) errors.colorError = "Color must be alphabetic characters!";        
         if (!Data.colour) errors.colorError = "Color is required!";
+
         if (!yearCheck) errors.yearError = "Year is required!";
-        if (!Data.chassisNumber) errors.chassError = "Chassis Number is required!";
+
+        if (regexNumber.test(Data.chassisNumber)) errors.chassError = "Chassis number should be number!";
+        if (!Data.chassisNumber) errors.chassError = "Chassis number is required!";
+
         if (!Data.ownerAddress.street) errors.streetError = "Street is required!";
-        if (!Data.ownerAddress.city) errors.cityError = "City is required!";
-        if (!Data.ownerAddress.ownerState) errors.ownerStateError = "State is required!";
-        if (!Data.ownerAddress.country) errors.countryError = "Country is required!";
+        // if (!Data.ownerAddress.city) errors.cityError = "City is required!";
+        // if (!Data.ownerAddress.ownerState) errors.ownerStateError = "State is required!";
+        // if (!Data.ownerAddress.country) errors.countryError = "Country is required!";
         return errors;
       };
  
@@ -53,23 +66,26 @@ function RegForm({Data}){
         setErrorMsg(errors);
         
         if (Object.keys(errors).length === 0) { 
-            navigate('/table'); 
+            navigate('/vehicle-details'); 
             dispatch( HandleSubmit(e) );
         };        
 
     };
     
+    const formReset = (e) => {
+        e.preventDefault();
+        dispatch(ResetForm(e));
+    };
  
     return(
         <>
-        <Navbar/>
          
         <section className='form-container'>
 
            
 
             <form className='form'>
-                   <h1 className='formHead'> Register Form</h1>
+                   <h1 className='formHead'>Vehicle Registeration<span id='starStyle'>*</span></h1>
               <div className='flex'>
                 <label>Name:</label>
                 <input 
@@ -140,6 +156,8 @@ function RegForm({Data}){
                     </datalist>
                 { errorMsg.yearError  && <span>{errorMsg.yearError}</span>}
                 </div>
+                
+           
 
                 <div className='flex'>
                 <label>Chassis Number:</label>
@@ -149,21 +167,23 @@ function RegForm({Data}){
                 onChange={ (e) => dispatch( ChassisNumber(e) ) }/>
                 { errorMsg.chassError  && <span>{errorMsg.chassError}</span>}
                 </div>
-
                 <div >
-            <label>Address:</label>
+                <label>Address:</label>
                 <div className='address-field'>
 
                    <div>
-                   <input 
-                   placeholder="street" 
+                   <textarea  
+                   className='address-textarear'
+                   rows={5}
+                   cols={45 }
+                   placeholder="Enter your Address..." 
                    value={Data.ownerAddress.street}
                    onChange={ (e) => dispatch( OwnerStreet(e) ) }/>
                    <br/>
                    {  errorMsg.streetError && <span>{ errorMsg.streetError}</span>}
                    </div>
   
-                  <div>
+                  {/* <div>
                   <input 
                    placeholder="city" 
                    value={Data.ownerAddress.city}
@@ -171,9 +191,9 @@ function RegForm({Data}){
                    <br/>
                    { errorMsg.cityError  && <span>{errorMsg.cityError}</span>}
 
-                  </div>
+                  </div> */}
 
-                  <div>
+                  {/* <div>
                   <input 
                    placeholder="state" 
                    value={
@@ -181,22 +201,36 @@ function RegForm({Data}){
                    onChange={ (e) => dispatch( OwnerState(e) ) }/>
                    <br/>
                    { errorMsg.ownerStateError  && <span>{errorMsg.ownerStateError}</span>}
-                  </div>
+                  </div> */}
 
-                   <div>
+                   {/* <div>
                    <input 
                    placeholder="country" 
                    value={Data.ownerAddress.country}
                    onChange={ (e) => dispatch( OwnerCountry(e) ) }/>
                    <br></br>
                    { errorMsg.countryError  && <span>{errorMsg.countryError}</span>}
-                   </div>
+                   </div> */}
+                   {/* <div className='pincode'>
+                   <input 
+                   placeholder="pincode" 
+                   value={Data.ownerAddress.country}
+                   onChange={ (e) => dispatch( OwnerCountry(e) ) }/>
+                   <br></br>
+                   { errorMsg.countryError  && <span>{errorMsg.countryError}</span>}
+                   </div> */}
                 </div>
-            </div>
+                </div>
+                <div className='btn-container-form'>
+                <button className='resetbtn' onClick={ (e) => formReset(e)
+                }>
+                    Reset
+                </button>
                 <button className='button' onClick={ (e) => FormHandleSubmit(e)
                 }>
                     Register
                 </button>
+                </div>
 
             </form> 
             

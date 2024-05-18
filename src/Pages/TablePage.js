@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch,useSelector } from 'react-redux';
 import { setInitialData, VehicleDelete } from './Action';
 import Spinner from './Spinner';
-import { Navbar } from './NavBar';
 
 
 
@@ -40,7 +39,8 @@ export function TablePage(){
       setLoading(true);
       
       setTimeout( () => {
-        navigate(`/editPage/${id}`);
+        // navigate(`/editPage/${id}`);
+        navigate(`/edit-vehicle-details/${id}`);
         setLoading(false);
       },1000);
    };
@@ -80,12 +80,11 @@ export function TablePage(){
         <>
 
         {loading && <Spinner />}
-        <Navbar/>
      
         <section className="table-container">
             <div className='headContainer'>
-                 <h1 className='table-head'>Vehicel Details Table</h1>
-                 <button  className='backBtn' onClick={() => navigate('/')}><i className='bx bx-plus-circle ' ></i> {  }Add User</button>
+                 <h1 className='table-head'>Vehicel Details</h1>
+                 <button  className='backBtn' onClick={() => navigate('/')}><i className='bx bx-plus-circle ' ></i> {  }Add Vehicle</button>
             </div>
            
             <table className="table">
@@ -112,8 +111,8 @@ export function TablePage(){
                                         {value.ownerName}
                                     </td>
                                     <td className= { index % 2 === 0 ? '':'colored'}>
-                                        {value.ownerAddress.street},
-                                        {
+                                        {value.ownerAddress.street}.
+                                        {/* {
                                             value.ownerAddress.city
                                         },
                                         
@@ -122,7 +121,7 @@ export function TablePage(){
                                         }-<br/>
                                         {
                                             value.ownerAddress.country
-                                        }.
+                                        }. */}
                                     </td>
                                     <td className= { index % 2 === 0 ? '':'colored'}>
                                         {

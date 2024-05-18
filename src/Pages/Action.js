@@ -103,6 +103,14 @@ export const HandleSubmit = (e) => {
          
 };
 
+
+export const ResetForm = (e) => {
+    e.preventDefault();
+    return {
+        type:'RESET'
+    };
+}
+
 export const VehicleDelete = (id) => { 
     
     

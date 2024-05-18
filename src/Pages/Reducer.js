@@ -171,7 +171,24 @@ function Reducer( state = initialValue,action ){
                     )
                     };
             
-        
+            case 'RESET':
+                return {
+                    ...state,
+                ownerName:'',
+                ownerAddress:{
+                street:'',
+                ownerState:'',
+                city:'',
+                country:''
+                },
+                phoneNumber:'',
+                modelName:'',
+                makerName:'',
+                colour:'',
+                year:'',
+                chassisNumber:''
+
+                };
            
     
         default:

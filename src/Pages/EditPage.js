@@ -1,11 +1,10 @@
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { updateVehicle } from './Action';
+import {  updateVehicle } from './Action';
 import { useState,useEffect } from 'react';
 import '../PageStyles/EditPage.css';
-import { Navbar } from './NavBar';
-import { regexNumber,regexDate } from '../RegExp/RegExp';
+import { regexNumber,regexDate,regexCaps } from '../RegExp/RegExp';
 export function EditPage() {
 
     const { id } = useParams(); 
@@ -35,16 +34,29 @@ export function EditPage() {
     const validateForm = () => {
         const errors = {};
         if (!vehicle.ownerName) errors.nameError = "Name is required!";
-        if (!numberCheck) errors.phError = "Phone Number Should be 10 Digits!";
-        if (!vehicle.makerName) errors.makeError = "Make Name is required!";
-        if (!vehicle.modelName) errors.moError = "Model Name is required!";
+        if (!regexCaps.test(vehicle.ownerName)) errors.nameError = "Name must be alphabetic characters!";
+
+        if (!vehicle.phoneNumber) errors.phError = "Phone number is required!";
+        if (!numberCheck) errors.phError = "Phone number should be 10 sigits!"; 
+
+        if (!vehicle.makerName) errors.makeError = "Make same is required!";
+        if (!regexCaps.test(vehicle.makerName)) errors.makeError = "Maker name must be alphabetic characters!";
+
+        if (!vehicle.modelName) errors.moError = "Model same is required!";
+        if (!regexCaps.test(vehicle.modelName)) errors.moError = "Model name must be alphabetic characters!";
+
         if (!vehicle.colour) errors.colorError = "Color is required!";
+        if (!regexCaps.test(vehicle.colour)) errors.colorError = "Color must be alphabetic characters!"; 
+
         if (!yearCheck) errors.yearError = "Year is required!";
-        if (!vehicle.chassisNumber) errors.chassError = "Chassis Number is required!";
-        if (!vehicle.ownerAddress.street) errors.streetError = "Street is required!";
-        if (!vehicle.ownerAddress.city) errors.cityError = "City is required!";
-        if (!vehicle.ownerAddress.ownerState) errors.ownerStateError = "State is required!";
-        if (!vehicle.ownerAddress.country) errors.countryError = "Country is required!";
+
+        if (!vehicle.chassisNumber) errors.chassError = "Chassis number is required!";
+        if (regexNumber.test(vehicle.chassisNumber)) errors.chassError = "Chassis number should be number!";
+
+        if (!vehicle.ownerAddress.street) errors.streetError = "Address is required!";
+        // if (!vehicle.ownerAddress.city) errors.cityError = "City is required!";
+        // if (!vehicle.ownerAddress.ownerState) errors.ownerStateError = "State is required!";
+        // if (!vehicle.ownerAddress.country) errors.countryError = "Country is required!";
         return errors;
       };
  
@@ -69,6 +81,7 @@ export function EditPage() {
 
     const handleAddressChange = (e) => {
         const { name, value } = e.target;
+        console.log(name);
         setVehicle(prevState => ({
             ...prevState,
             ownerAddress: {
@@ -82,11 +95,12 @@ export function EditPage() {
         e.preventDefault();
         const errors = validateForm();
         setErrorMsg(errors);
+        console.log("hi");
         if (Object.keys(errors).length === 0) { 
             axios.put(`https://65b1d9849bfb12f6eafc3b4b.mockapi.io/Vehicle-Registration/${id}`, vehicle)
             .then(() => {
                 dispatch(updateVehicle(vehicle));  
-                navigate('/table');  
+                navigate('/vehicle-details');  
             })
             .catch(error => {
                 console.error('Failed to update vehicle:', error);
@@ -95,19 +109,23 @@ export function EditPage() {
 
        
     };
+    // const formReset = (e) => {
+    //     e.preventDefault();
+    //     dispatch(ResetForm(e));
+    // };
+ 
 
 
   
     
     return(
         <>
-        <Navbar/>
         <section className='editForm-container'>
 
            
 
             <form className='editForm' onSubmit={handleSubmit}>
-            <h1 className='editPageHead'>Edit Vehicle Details</h1>
+            <h1 className='editPageHead'>Edit Vehicle Details<span id='starStyle'>*</span></h1>
                 <div className='flex'>
                 <label>Name:</label>
                 <input
@@ -204,15 +222,23 @@ export function EditPage() {
                 <label>Address:</label>
                 <div className='address-field'>
 
-                   <input 
-                   placeholder="street" 
+                  <div>
+                  <textarea
+                   className='address-textarear' 
+                   placeholder="Enter your Address..."
+                   rows={5}
+                   cols={45 } 
                    type="text" 
                    name="street" 
                    value={vehicle.ownerAddress.street} 
                    onChange={handleAddressChange} 
                     />
+                    <br/>
                     {  errorMsg.streetError && <span>{ errorMsg.streetError}</span>}
-                   <input 
+                    </div>
+
+                    
+                   {/* <input 
                    placeholder="city"
                    type="text" 
                    name="city" 
@@ -236,14 +262,21 @@ export function EditPage() {
                    value={vehicle.ownerAddress.country} 
                    onChange={handleAddressChange}
                     />
-                     { errorMsg.countryError  && <span>{errorMsg.countryError}</span>}
+                     { errorMsg.countryError  && <span>{errorMsg.countryError}</span>} */}
                 </div>
                 </div>
 
-                <button className='updateBtn'>
-                    Update
-                </button>
-
+                
+                <div className='btn-container-form'>
+                    {/* <button className='resetbtn' onClick={ (e) => formReset(e)
+                    }>
+                        Reset
+                    </button> */}
+                    <button className='updateBtn'
+                    onClick={ (e) => handleSubmit(e)}>
+                        Update
+                    </button>
+                </div>
             </form>
 
         </section>
