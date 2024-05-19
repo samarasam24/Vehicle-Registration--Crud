@@ -18,19 +18,19 @@ export function Navbar() {
                   to="/create-vehicle-details" 
                   className={({ isActive }) => (isActive ? "active-link" : "")}
                 >
-                  Register
+                   Add New
                 </NavLink>
                 <NavLink 
                   to="/vehicle-details" 
                   className={({ isActive }) => (isActive ? "active-link" : "")}
                 >
-                  List
+                 All Entries
                 </NavLink>
                 <NavLink 
                   to="/edit-vehicle-details?/:id" 
                   className={({ isActive }) => (isActive ? "active-link" : "deactive-link")}
                 >
-                 Edit
+                 Modify Entry
                 </NavLink>
                  <img src={logo} alt='icon' />
                </div>

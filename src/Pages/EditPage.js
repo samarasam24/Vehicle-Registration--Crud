@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import {  updateVehicle } from './Action';
 import { useState,useEffect } from 'react';
 import '../PageStyles/EditPage.css';
-import { regexNumber,regexDate,regexCaps } from '../RegExp/RegExp';
+import { regexNumber,regexDate,regexCaps, regexSapce, regexNumOnly } from '../RegExp/RegExp';
 export function EditPage() {
 
     const { id } = useParams(); 
@@ -25,7 +25,6 @@ export function EditPage() {
         year: '',
         chassisNumber: ''
     });
-
     const [ errorMsg,setErrorMsg ] = useState({});
 
     const numberCheck = regexNumber.test(vehicle.phoneNumber);
@@ -33,27 +32,28 @@ export function EditPage() {
 
     const validateForm = () => {
         const errors = {};
-        if (!vehicle.ownerName) errors.nameError = "Name is required!";
-        if (!regexCaps.test(vehicle.ownerName)) errors.nameError = "Name must be alphabetic characters!";
+        if (!vehicle.ownerName) errors.nameError = "Name is required*";
+        if (!regexCaps.test(vehicle.ownerName)) errors.nameError = "Name must be alphabetic characters*";
 
-        if (!vehicle.phoneNumber) errors.phError = "Phone number is required!";
-        if (!numberCheck) errors.phError = "Phone number should be 10 sigits!"; 
+        if (!vehicle.phoneNumber) errors.phError = "Phone number is required*";
+        if (!numberCheck) errors.phError = "Phone number should be 10 sigits*"; 
 
-        if (!vehicle.makerName) errors.makeError = "Make same is required!";
-        if (!regexCaps.test(vehicle.makerName)) errors.makeError = "Maker name must be alphabetic characters!";
+        if (!vehicle.makerName) errors.makeError = "Make same is required*";
+        if (!regexCaps.test(vehicle.makerName)) errors.makeError = "Maker name must be alphabetic characters*";
 
-        if (!vehicle.modelName) errors.moError = "Model same is required!";
-        if (!regexCaps.test(vehicle.modelName)) errors.moError = "Model name must be alphabetic characters!";
+        if (!vehicle.modelName) errors.moError = "Model same is required*";
+        if (!regexCaps.test(vehicle.modelName)) errors.moError = "Model name must be alphabetic characters*";
 
-        if (!vehicle.colour) errors.colorError = "Color is required!";
-        if (!regexCaps.test(vehicle.colour)) errors.colorError = "Color must be alphabetic characters!"; 
+        if (!vehicle.colour) errors.colorError = "Color is required*";
+        if (!regexCaps.test(vehicle.colour)) errors.colorError = "Color must be alphabetic characters*"; 
 
-        if (!yearCheck) errors.yearError = "Year is required!";
+        if (!yearCheck) errors.yearError = "Year is required*";
 
-        if (!vehicle.chassisNumber) errors.chassError = "Chassis number is required!";
-        if (regexNumber.test(vehicle.chassisNumber)) errors.chassError = "Chassis number should be number!";
+        if (!vehicle.chassisNumber) errors.chassError = "Chassis number is required*";
+        if (!regexNumOnly.test(vehicle.chassisNumber)) errors.chassError = "Chassis number should be number*";
 
-        if (!vehicle.ownerAddress.street) errors.streetError = "Address is required!";
+        if (!vehicle.ownerAddress.street) errors.streetError = "Address is required*";
+        if(!regexSapce.test(vehicle.ownerAddress.street)) errors.streetError = 'Address must have characters*';
         // if (!vehicle.ownerAddress.city) errors.cityError = "City is required!";
         // if (!vehicle.ownerAddress.ownerState) errors.ownerStateError = "State is required!";
         // if (!vehicle.ownerAddress.country) errors.countryError = "Country is required!";
@@ -109,10 +109,30 @@ export function EditPage() {
 
        
     };
-    // const formReset = (e) => {
-    //     e.preventDefault();
-    //     dispatch(ResetForm(e));
-    // };
+
+    const formReset = (e) => {
+        
+        e.preventDefault();
+
+        setVehicle(
+            {
+                ownerName: '',
+                ownerAddress: {
+                    street: '',
+                    ownerState: '',
+                    city: '',
+                    country: ''
+                },
+                phoneNumber: '',
+                modelName: '',
+                makerName: '',
+                colour: '',
+                year: '',
+                chassisNumber: ''
+            }
+        );
+
+    };
  
 
 
@@ -125,10 +145,11 @@ export function EditPage() {
            
 
             <form className='editForm' onSubmit={handleSubmit}>
-            <h1 className='editPageHead'>Edit Vehicle Details<span id='starStyle'>*</span></h1>
+            <h1 className='editPageHead'>Edit Vehicle Details</h1>
                 <div className='flex'>
-                <label>Name:</label>
+                <label>Name<span id='starStyle'>*</span></label>
                 <input
+                placeholder="Enter your name"
                 type="text" 
                 name="ownerName" 
                 value={vehicle.ownerName} 
@@ -137,9 +158,9 @@ export function EditPage() {
                  { errorMsg.nameError  && <span>{errorMsg.nameError}</span>}
                 </div>
                 <div className='flex'>
-                <label>Phone Number:</label>
+                <label>Phone Number<span id='starStyle'>*</span></label>
                 <input 
-                placeholder="Phone Number"
+                placeholder="Phone number"
                 type="text" 
                 name="phoneNumber" 
                 value={vehicle.phoneNumber} 
@@ -148,9 +169,9 @@ export function EditPage() {
                  { errorMsg.phError  && <span>{errorMsg.phError}</span>}
                 </div>
                 <div className='flex'>
-                <label>Maker's Name :</label>
+                <label>Maker's Name <span id='starStyle'>*</span></label>
                 <input 
-                placeholder=""
+                placeholder="Enter Vehicle Maker's Name"
                 type="text" 
                 name="makerName" 
                 value={vehicle.makerName} 
@@ -159,7 +180,7 @@ export function EditPage() {
                  { errorMsg.makeError  && <span>{errorMsg.makeError}</span>}
                 </div>
                 <div className='flex'>
-                <label>Model of Name:</label>
+                <label>Model of Name<span id='starStyle'>*</span></label>
                 <input 
                 placeholder=''
                 type="text" 
@@ -170,7 +191,7 @@ export function EditPage() {
                  { errorMsg.moError  && <span>{errorMsg.moError}</span>}
                 </div>
                 <div className='flex'>
-                <label>Colour</label>
+                <label>Colour<span id='starStyle'>*</span></label>
                 <input 
                 placeholder=''
                 type="text" 
@@ -181,7 +202,7 @@ export function EditPage() {
                  { errorMsg.colorError  && <span>{errorMsg.colorError}</span>}
                 </div>
                 <div className='flex'>
-                <label>Year</label>
+                <label>Year<span id='starStyle'>*</span></label>
                 <input
                 list='years'
                 placeholder=''
@@ -207,7 +228,7 @@ export function EditPage() {
                 { errorMsg.yearError  && <span>{errorMsg.yearError}</span>}
                 </div>
                 <div className='flex'>
-                <label>Chassis Number:</label>
+                <label>Chassis Number<span id='starStyle'>*</span></label>
                 <input 
                 placeholder="" 
                 type="text" 
@@ -219,7 +240,7 @@ export function EditPage() {
                 </div>            
                  
                 <div>
-                <label>Address:</label>
+                <label>Address <span id='starStyle'>*</span></label>
                 <div className='address-field'>
 
                   <div>
@@ -268,10 +289,10 @@ export function EditPage() {
 
                 
                 <div className='btn-container-form'>
-                    {/* <button className='resetbtn' onClick={ (e) => formReset(e)
+                    <button className='resetbtn' onClick={ (e) => formReset(e)
                     }>
                         Reset
-                    </button> */}
+                    </button>
                     <button className='updateBtn'
                     onClick={ (e) => handleSubmit(e)}>
                         Update

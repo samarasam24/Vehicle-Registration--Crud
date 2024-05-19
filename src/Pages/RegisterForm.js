@@ -4,21 +4,14 @@ import { MakeName , OwnerName, OwnerStreet, PhoneNum,MakeModel,Year,Color,Chassi
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import { regexCaps, regexDate, regexNumber } from '../RegExp/RegExp';
+import { regexCaps, regexDate, regexNumOnly, regexNumber,regexSapce } from '../RegExp/RegExp';
  
-
-
-
-
 const stateValue = (state) =>{
  
    return { Data:state}
 
 };
-
-
-
-
+ 
 function RegForm({Data}){
    
     const dispatch = useDispatch();
@@ -31,27 +24,28 @@ function RegForm({Data}){
     
     const validateForm = () => {
         const errors = {};
-        if (!regexCaps.test(Data.ownerName)) errors.nameError = "Name must be alphabetic characters!";
-        if (!Data.ownerName) errors.nameError = "Name is required!";
+        if (!regexCaps.test(Data.ownerName)) errors.nameError = "Name must be alphabetic characters*";
+        if (!Data.ownerName) errors.nameError = "Name is required*";
 
-        if (!numberCheck) errors.phError = "Phone number should be 10 digits!";
-        if (!Data.phoneNumber) errors.phError = "Phone number is required!";
+        if (!numberCheck) errors.phError = "Phone number should be 10 digits*";
+        if (!Data.phoneNumber) errors.phError = "Phone number is required*";
 
-        if (!regexCaps.test(Data.makerName)) errors.makeError = "Maker name must be alphabetic characters!";
-        if (!Data.makerName) errors.makeError = "Make name is required!";
+        if (!regexCaps.test(Data.makerName)) errors.makeError = "Maker name must be alphabetic characters*";
+        if (!Data.makerName) errors.makeError = "Make name is required*";
 
-        if (!regexCaps.test(Data.modelName)) errors.moError = "Model name must be alphabetic characters!";
-        if (!Data.modelName) errors.moError = "Model name is required!";
+        if (!regexCaps.test(Data.modelName)) errors.moError = "Model name must be alphabetic characters*";
+        if (!Data.modelName) errors.moError = "Model name is required*";
 
-        if (!regexCaps.test(Data.colour)) errors.colorError = "Color must be alphabetic characters!";        
-        if (!Data.colour) errors.colorError = "Color is required!";
+        if (!regexCaps.test(Data.colour)) errors.colorError = "Color must be alphabetic characters*";        
+        if (!Data.colour) errors.colorError = "Color is required*";
 
-        if (!yearCheck) errors.yearError = "Year is required!";
+        if (!yearCheck) errors.yearError = "Year is required*";
 
-        if (regexNumber.test(Data.chassisNumber)) errors.chassError = "Chassis number should be number!";
-        if (!Data.chassisNumber) errors.chassError = "Chassis number is required!";
+        if (!regexNumOnly.test(Data.chassisNumber)) errors.chassError = "Chassis number should be numbers*";
+        if (!Data.chassisNumber) errors.chassError = "Chassis number is required*";
 
-        if (!Data.ownerAddress.street) errors.streetError = "Street is required!";
+        if (!Data.ownerAddress.street) errors.streetError = "Address is required*";
+        if(!regexSapce.test(Data.ownerAddress.street)) errors.streetError = 'Address must have characters*';
         // if (!Data.ownerAddress.city) errors.cityError = "City is required!";
         // if (!Data.ownerAddress.ownerState) errors.ownerStateError = "State is required!";
         // if (!Data.ownerAddress.country) errors.countryError = "Country is required!";
@@ -85,9 +79,9 @@ function RegForm({Data}){
            
 
             <form className='form'>
-                   <h1 className='formHead'>Vehicle Registeration<span id='starStyle'>*</span></h1>
+                   <h1 className='formHead'>Vehicle Registeration</h1>
               <div className='flex'>
-                <label>Name:</label>
+                <label>Name<span id='starStyle'>*</span></label>
                 <input 
                 placeholder='Enter Your Name...'
                 onChange={(e) => dispatch( OwnerName(e) )}
@@ -98,7 +92,7 @@ function RegForm({Data}){
               </div>
             <div className='flex'>
                 
-            <label>Phone Number:</label>
+            <label>Phone Number<span id='starStyle'>*</span></label>
                 <input 
                 placeholder="Enter Your Phone.No..."
                 value={Data.phoneNumber}
@@ -107,7 +101,7 @@ function RegForm({Data}){
             </div>
 
                 <div className='flex'>
-                <label>Maker's Name :</label>
+                <label>Maker's Name <span id='starStyle'>*</span></label>
                 <input 
                 placeholder="Enter Vehicle Maker's Name..."
                 value={Data.makerName}
@@ -116,7 +110,7 @@ function RegForm({Data}){
                 </div>
 
                 <div className='flex'>
-                <label>Model of Name:</label>
+                <label>Model of Name<span id='starStyle'>*</span></label>
                 <input 
                 placeholder='vehicle Model Name...'
                 value={Data.modelName}
@@ -125,7 +119,7 @@ function RegForm({Data}){
                 </div>
 
                 <div className='flex'>
-                <label>Color</label>
+                <label>Color<span id='starStyle'>*</span></label>
                 <input 
                 placeholder='Enter Your Vehicle Color...'
                 value={Data.colour}
@@ -134,7 +128,7 @@ function RegForm({Data}){
                 </div>
 
                 <div className='flex'>
-                <label>Year</label>
+                <label>Year<span id='starStyle'>*</span></label>
                 <input
                 list='years' 
                 placeholder='Enter Vehicle Mfg.Year..'
@@ -160,7 +154,7 @@ function RegForm({Data}){
            
 
                 <div className='flex'>
-                <label>Chassis Number:</label>
+                <label>Chassis Number<span id='starStyle'>*</span></label>
                 <input 
                 placeholder="Enter Vehicle Chassis.NO..." 
                 value={Data.chassisNumber}
@@ -168,7 +162,7 @@ function RegForm({Data}){
                 { errorMsg.chassError  && <span>{errorMsg.chassError}</span>}
                 </div>
                 <div >
-                <label>Address:</label>
+                <label>Address<span id='starStyle'>*</span></label>
                 <div className='address-field'>
 
                    <div>
