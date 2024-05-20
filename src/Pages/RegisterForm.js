@@ -60,7 +60,7 @@ function RegForm({Data}){
         setErrorMsg(errors);
         
         if (Object.keys(errors).length === 0) { 
-            navigate('/vehicle-details'); 
+            navigate('/all-vehicle-details'); 
             dispatch( HandleSubmit(e) );
         };        
 

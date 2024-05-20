@@ -9,14 +9,13 @@ function App() {
   return (
     <BrowserRouter>
        <Provider store={store}>
-       <Navbar/>
+         <Navbar/>
          <Routes>
           <Route path='/' element={<Navigate to='/create-vehicle-details' />} />
           <Route path='/create-vehicle-details' element={<ConnectedForm />} />   
-          <Route path='/vehicle-details' element={<TablePage/>}/>
+          <Route path='/all-vehicle-details' element={<TablePage/>}/>
           <Route path='/edit-vehicle-details?/:id' element={<EditPage/>}/>
          </Routes>
-
       </Provider>
     </BrowserRouter>
   );

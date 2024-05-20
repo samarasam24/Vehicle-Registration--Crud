@@ -100,7 +100,7 @@ export function EditPage() {
             axios.put(`https://65b1d9849bfb12f6eafc3b4b.mockapi.io/Vehicle-Registration/${id}`, vehicle)
             .then(() => {
                 dispatch(updateVehicle(vehicle));  
-                navigate('/vehicle-details');  
+                navigate('/all-vehicle-details');  
             })
             .catch(error => {
                 console.error('Failed to update vehicle:', error);

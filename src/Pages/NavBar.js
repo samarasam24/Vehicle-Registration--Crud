@@ -1,9 +1,30 @@
 import '../PageStyles/NavBar.css';
 import { NavLink } from 'react-router-dom';
-import logo from '../images/f19e4f665f2c7528e72df51b28e660f7-removebg-preview.png'
- 
+import logo from '../images/png-transparent-profile-logo-computer-icons-user-user-blue-heroes-logo-thumbnail.png';
+// import { useEffect, useState } from 'react';
+// import axios from 'axios';
 
 export function Navbar() {
+
+//   const [ logoName,setLogoName ] = useState('');
+
+//   useEffect( ()=> {
+
+//     axios.get("https://65b1d9849bfb12f6eafc3b4b.mockapi.io/Vehicle-Registration")
+//     .then( response =>{
+     
+//       setLogoName(response.data[response.data.length-1].ownerName.toUpperCase());
+    
+//     })
+
+//     .catch( error => {
+//           console.error(error);
+          
+//     }
+//     )
+
+// },[logoName]
+// );
 
     return( 
         <>
@@ -18,10 +39,10 @@ export function Navbar() {
                   to="/create-vehicle-details" 
                   className={({ isActive }) => (isActive ? "active-link" : "")}
                 >
-                   Add New
+                   Add Vehicle
                 </NavLink>
                 <NavLink 
-                  to="/vehicle-details" 
+                  to="/all-vehicle-details" 
                   className={({ isActive }) => (isActive ? "active-link" : "")}
                 >
                  All Entries
@@ -33,6 +54,7 @@ export function Navbar() {
                  Modify Entry
                 </NavLink>
                  <img src={logo} alt='icon' />
+                 {/* <div className='logoFirstLetter'>{logoName[0]}</div> */}
                </div>
              
         </nav>

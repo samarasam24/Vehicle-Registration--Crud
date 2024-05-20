@@ -173,7 +173,7 @@ export function TablePage(){
         </section>
 
         <dialog id="deleteDialog"  className={ isActive ? ' visible' : 'invisible'}>
-        <div className='headMsgCon'><sapn className='headmsgconfirm' >Confirmation Notification</sapn> <span className='x'
+         <div className='headMsgCon'><sapn className='headmsgconfirm' >Confirmation Notification</sapn> <span className='x'
          onClick={() => document.getElementById('deleteDialog').close()}>&times;</span></div>
           <p id='msg-content'>Are you sure you want to delete this item?  </p> 
           <div className='div'>
