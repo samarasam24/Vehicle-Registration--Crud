@@ -47,3 +47,25 @@
         padding:15px 10px;
     }
 }
+@media only screen and (max-width:487px) and (min-width:320px){
+    .editForm{
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        padding:15px 20px;
+        width: 250px; 
+    }
+    .formHead{
+        font-size: 20px;
+    }
+    input{
+        padding:10px 2px; 
+    }
+    .address-field{
+        gap: 2px;
+    }
+    .address-textarear{
+        width: 230px;
+        height: 30px;
+    }
+}

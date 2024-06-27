@@ -84,7 +84,7 @@ export function TablePage(){
         <section className="table-container">
             <div className='headContainer'>
                  <h1 className='table-head'>Registered Vehicel Details</h1>
-                 <button  className='backBtn' onClick={() => navigate('/')}><i className='bx bx-plus-circle ' ></i> {  }Add New</button>
+                
             </div>
            
             <table className="table">
@@ -169,6 +169,7 @@ export function TablePage(){
                                       
                 </tbody>
             </table>
+            <button  className='backBtn' onClick={() => navigate('/')}><i className='bx bx-plus-circle ' ></i> {  }Add New</button>
             
         </section>
 

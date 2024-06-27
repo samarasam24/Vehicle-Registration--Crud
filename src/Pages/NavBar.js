@@ -1,11 +1,13 @@
 import '../PageStyles/NavBar.css';
 import { NavLink } from 'react-router-dom';
 import logo from '../images/png-transparent-profile-logo-computer-icons-user-user-blue-heroes-logo-thumbnail.png';
+import { useState } from 'react';
 // import { useEffect, useState } from 'react';
 // import axios from 'axios';
 
 export function Navbar() {
 
+  const [mobileView,setMobileView] = useState(false);
 //   const [ logoName,setLogoName ] = useState('');
 
 //   useEffect( ()=> {
@@ -24,17 +26,17 @@ export function Navbar() {
 //     )
 
 // },[logoName]
-// );
+// ); 
 
     return( 
         <>
         <nav>
              
                 <h1 className='logobrand'>Vehicle Registration</h1> 
-             
+                <i className='bx bx-menu'   id='hamburger' onClick={ () => setMobileView( !mobileView ) }></i>
 
              
-               <div>
+               <div className={!mobileView?'':'mobileView'}>
                 <NavLink 
                   to="/create-vehicle-details" 
                   className={({ isActive }) => (isActive ? "active-link" : "")}

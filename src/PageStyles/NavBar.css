@@ -2,7 +2,7 @@ nav{
     display: flex;
     justify-content: space-between;
     align-items: center;  
-    height: 10vh; 
+    min-height: 10vh; 
     /* background-color: #eeecec;  */
     background-color: #f8f9fa; 
     box-shadow: 0px 0px 4px rgba(22, 21, 21, 0.696) !important;
@@ -64,17 +64,75 @@ a:hover{
     padding: 4px 10px;
     border-radius: 50%;
 }
-
-@media only screen and (max-width:1023px) and (min-width:724px){
+#hamburger{
+    color:'#5c5654';
+    display: none;
+}
+@media only screen and (max-width:1023px) and (min-width:700px){
     .logobrand{
         top: -13%;
         left: 14%;
+        width: 100%;
+        margin-left: 30px;
     }
     nav{
         justify-content: space-evenly;
     }
     nav div{ 
-        margin-left: 150px;
-        column-gap: 70px;
+        margin-left: 0px;
+        column-gap: 5px;
+        margin-right: 10px;
+    }
+    img{
+        width: 10%;
+    }
+}
+
+@media only screen and (max-width:699px) and (min-width:500px){
+    nav div{ 
+        margin-left: 0px;
+        column-gap: 5px;
+        margin-right: 10px;
+    }
+    .logobrand{
+        width: 100%;
+        margin-left: 15px;
+        font-size: 1.3rem;
+    }
+    img{
+        width: 8%;
+    }
+    a{
+        font-size: 10px;
+    }
+}
+
+@media only screen and (max-width:499px) and (min-width:300px){
+    nav{
+        display: grid;
+        grid-template-columns: 200px 50px;
+        padding-bottom: 10px;
+    }
+    .logobrand{
+        margin-left: 15px;
+        font-size: 1.2rem;
+    }
+    #hamburger{
+        display: block;
+        font-size: 1.6rem; 
+    }
+    nav div{
+        flex-direction: column-reverse;
+        justify-content: flex-start;
+        align-items: start;
+        padding-left: 10px;
+        row-gap: 10px;
+        display: none;
+    }
+    img{
+        width: 30px; 
+    }
+    .mobileView{
+        display: flex;
     }
 }
